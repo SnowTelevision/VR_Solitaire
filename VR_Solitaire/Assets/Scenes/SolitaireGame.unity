@@ -6454,8 +6454,8 @@ MonoBehaviour:
   tripsOnDisplay: []
   deck: []
   discardPile: []
-  cardStackOffsetY: 0.7
-  cardStackOffsetZ: 0.15
+  cardStackOffsetY: 0.45
+  cardStackOffsetZ: 0.2
 --- !u!4 &1172259712
 Transform:
   m_ObjectHideFlags: 0
@@ -6511,7 +6511,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198706964}
-  m_LocalRotation: {x: -0.3166294, y: -0, z: -0, w: 0.94854933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.92, z: 1.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6521,7 +6521,7 @@ Transform:
   - {fileID: 1021583274}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -36.918003, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1206985215
 GameObject:
   m_ObjectHideFlags: 0
@@ -10816,8 +10816,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781964868}
-  m_LocalRotation: {x: -0.018232552, y: -0, z: -0, w: 0.9998338}
-  m_LocalPosition: {x: 0, y: 3.679297, z: 0.98035336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.41, z: 3.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 261182272}
@@ -10829,7 +10829,7 @@ Transform:
   - {fileID: 1146223082}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -2.089, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832042914
 GameObject:
   m_ObjectHideFlags: 0
@@ -11144,14 +11144,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910757660}
-  m_LocalRotation: {x: -0.16378087, y: -0.35912654, z: -0.06417248, w: 0.916562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.15, y: 4.49, z: 4.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2131076929}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -20.263, y: -42.792004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925956906
 GameObject:
   m_ObjectHideFlags: 0

@@ -153,7 +153,7 @@ public class UserInput : MonoBehaviour
                 else
                 {
                     slot1 = selected;
-                }
+                }                
             }
 
         }
@@ -301,10 +301,6 @@ public class UserInput : MonoBehaviour
 
         slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - solitaire.cardStackOffsetZ);
         slot1.transform.parent = selected.transform; // this makes the children move with the parents
-        slot1.transform.localPosition = transform.parent.InverseTransformPoint(new Vector3(0, -yOffset, -solitaire.cardStackOffsetZ));
-        //slot1.transform.localPosition = new Vector3(0, -yOffset, -solitaire.cardStackOffsetZ);
-        slot1.transform.localEulerAngles = Vector3.zero;
-        slot1.transform.localScale = Vector3.one;
 
         if (s1.inDeckPile) // removes the cards from the top pile to prevent duplicate cards
         {

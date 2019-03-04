@@ -47,7 +47,7 @@ public class Solitaire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void PlayCards()
@@ -110,16 +110,13 @@ public class Solitaire : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.05f);
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
-                //newCard.transform.localPosition = new Vector3(0, -cardStackOffsetY, -cardStackOffsetZ);
-                newCard.transform.localEulerAngles = Vector3.zero;
-                newCard.transform.localScale = Vector3.one;
                 newCard.name = card;
                 newCard.GetComponent<Selectable>().row = i;
-                if (card == bottoms[i][bottoms[i].Count - 1])
+                if (card == bottoms[i][bottoms[i].Count -1])
                 {
                     newCard.GetComponent<Selectable>().faceUp = true;
                 }
-
+                
 
                 yOffset = yOffset + cardStackOffsetY;
                 zOffset = zOffset + cardStackOffsetZ;
@@ -210,9 +207,6 @@ public class Solitaire : MonoBehaviour
             foreach (string card in deckTrips[deckLocation])
             {
                 GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z + zOffset), Quaternion.identity, deckButton.transform);
-                //newTopCard.transform.localPosition = new Vector3(xOffset, 0, cardStackOffsetZ);
-                newTopCard.transform.localEulerAngles = Vector3.zero;
-                newTopCard.transform.localScale = Vector3.one;
                 xOffset = xOffset + cardStackOffsetY;
                 zOffset = zOffset - cardStackOffsetZ;
                 newTopCard.name = card;
