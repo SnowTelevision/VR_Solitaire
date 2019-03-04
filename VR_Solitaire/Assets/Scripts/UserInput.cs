@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using VRTK;
 
 public class UserInput : MonoBehaviour
 {
-    public GameObject slot1;
+    public GameObject slot1; // The card that is already selected (used to be compared with the newer selected card)
     private Solitaire solitaire;
     private float timer;
     private float doubleClickTime = 0.3f;
@@ -38,6 +39,44 @@ public class UserInput : MonoBehaviour
         }
 
         GetMouseClick();
+    }
+
+    /// <summary>
+    /// If the player clicked the controller's trigger
+    /// </summary>
+    /// <param name="controller"></param>
+    public void OnTriggerClicked(GameObject controller)
+    {
+        clickCount++;
+
+        RaycastHit hit = new RaycastHit();
+        GameObject pointerTracer = controller.GetComponent<VRTK_StraightPointerRenderer>().GetPointerObjects()[2];
+        GameObject pointerCursor = controller.GetComponent<VRTK_StraightPointerRenderer>().GetPointerObjects()[1];
+
+        if (Physics.Raycast(pointerTracer.transform.position, pointerCursor.transform.forward, out hit))
+        {
+            // what has been hit? Deck/Card/EmptySlot...
+            if (hit.collider.CompareTag("Deck"))
+            {
+                //clicked deck
+                Deck();
+            }
+            else if (hit.collider.CompareTag("Card"))
+            {
+                // clicked card
+                Card(hit.collider.gameObject);
+            }
+            else if (hit.collider.CompareTag("Top"))
+            {
+                // clicked top
+                Top(hit.collider.gameObject);
+            }
+            else if (hit.collider.CompareTag("Bottom"))
+            {
+                // clicked bottom
+                Bottom(hit.collider.gameObject);
+            }
+        }
     }
 
     void GetMouseClick()
@@ -114,7 +153,7 @@ public class UserInput : MonoBehaviour
                 else
                 {
                     slot1 = selected;
-                }                
+                }
             }
 
         }
@@ -253,15 +292,19 @@ public class UserInput : MonoBehaviour
 
         Selectable s1 = slot1.GetComponent<Selectable>();
         Selectable s2 = selected.GetComponent<Selectable>();
-        float yOffset = 0.3f;
+        float yOffset = solitaire.cardStackOffsetY;
 
         if (s2.top || (!s2.top && s1.value == 13))
         {
             yOffset = 0;
         }
 
-        slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - 0.01f);
+        slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - solitaire.cardStackOffsetZ);
         slot1.transform.parent = selected.transform; // this makes the children move with the parents
+        slot1.transform.localPosition = transform.parent.InverseTransformPoint(new Vector3(0, -yOffset, -solitaire.cardStackOffsetZ));
+        //slot1.transform.localPosition = new Vector3(0, -yOffset, -solitaire.cardStackOffsetZ);
+        slot1.transform.localEulerAngles = Vector3.zero;
+        slot1.transform.localScale = Vector3.one;
 
         if (s1.inDeckPile) // removes the cards from the top pile to prevent duplicate cards
         {
