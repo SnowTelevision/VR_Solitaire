@@ -226,7 +226,7 @@ namespace MirzaBeig
                                     //    customParticleData[i] = new Vector4(++uniqueParticleID, 0, 0, 0);
                                     //}
                                 }
-
+                                
                                 //particleSystem.SetCustomParticleData(customParticleData, ParticleSystemCustomData.Custom1);
 
                                 Vector3 p1p2_difference;
@@ -248,7 +248,7 @@ namespace MirzaBeig
                                         float lineStartColourOriginalAlpha = Mathf.LerpUnclamped(lineRendererStartColour.a, particleColour.a, alphaFromParticle);
 
                                         lineStartColour.a = lineStartColourOriginalAlpha;
-                                        
+
                                         float lineStartWidth = Mathf.LerpUnclamped(lineRendererStartWidth, particleSizes[i], widthFromParticle);
 
                                         int connections = 0;
@@ -287,12 +287,18 @@ namespace MirzaBeig
                                                 float alphaAttenuation = alphaOverNormalizedDistance.Evaluate(distanceSqr / maxDistanceSqr);
                                                 lineStartColour.a = lineStartColourOriginalAlpha * alphaAttenuation;
 
+                                                /////////////////////////////////////////////////////Changed Code////////////////////////////////////////////////////
+                                                lineStartColour.a = particleSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_TintColor").a;
+
                                                 lr.startColor = lineStartColour;
 
                                                 particleColour = particleColours[j];
 
                                                 Color lineEndColour = Color.LerpUnclamped(lineRendererEndColour, particleColour, colourFromParticle);
                                                 lineEndColour.a = Mathf.LerpUnclamped(lineRendererEndColour.a, particleColour.a, alphaFromParticle);
+
+                                                /////////////////////////////////////////////////////Changed Code////////////////////////////////////////////////////
+                                                lineEndColour.a = particleSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_TintColor").a;
 
                                                 lr.endColor = lineEndColour;
                                                 
@@ -569,13 +575,19 @@ namespace MirzaBeig
 
                                                 lineStartColour.a = lineStartColourOriginalAlpha * alphaAttenuation;
 
+                                                /////////////////////////////////////////////////////Changed Code////////////////////////////////////////////////////
+                                                lineStartColour.a = particleSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_TintColor").a;
+
                                                 lr.startColor = lineStartColour;
 
                                                 particleColour = particleColours[j];
 
                                                 Color lineEndColour = Color.LerpUnclamped(lineRendererEndColour, particleColour, colourFromParticle);
                                                 lineEndColour.a = Mathf.LerpUnclamped(lineRendererEndColour.a, particleColour.a, alphaFromParticle) * alphaAttenuation;
-                                                
+
+                                                /////////////////////////////////////////////////////Changed Code////////////////////////////////////////////////////
+                                                lineEndColour.a = particleSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_TintColor").a;
+
                                                 lr.endColor = lineEndColour;
                                                 
                                                 lr.startWidth = lineStartWidth;
